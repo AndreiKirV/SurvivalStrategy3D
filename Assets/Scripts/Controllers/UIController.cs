@@ -6,6 +6,7 @@ using Utils;
 using GWC;
 using Main;
 using Main.Dictionary;
+using Main.Ui.Cursor;
 
 namespace Main.Ui
 {
@@ -16,12 +17,9 @@ namespace Main.Ui
         private GameObject _button = Resources.Load<GameObject>(Dictionaries.Path.UI.Button);
         private List <Button> _buttons = new List<Button>();
         private GameObject _content;
-        private GameObject _cursor = Resources.Load<GameObject>(Dictionaries.Path.UI.Cursor);
-        private RectTransform _mouseRect;
         private Camera _camera;
-        private Plane _plane;
         private BuildingStore _buildingsStore;
-
+        private CursorController _cursor = new CursorController();
         public UIController(Canvas canvas)
         {
             TargetCanvas = canvas;
@@ -29,38 +27,31 @@ namespace Main.Ui
 
         public void Init()
         {
-            Cursor.visible = false;
-            _cursor = MainController.InstantiatePrefab(_cursor, TargetCanvas.transform.position, TargetCanvas.transform);
-            _mouseRect = _cursor.GetComponent<RectTransform>();
-            _mouseRect.localRotation = Quaternion.Euler(Vector3.zero);
-
             _buildingsStore = new BuildingStore(TargetCanvas);
             _buildingsStore.Init();
+
+            
+            _cursor.Init(TargetCanvas);
         }
 
         public void Awake()
         {
             _camera = Camera.main;
-            _plane = new Plane(Vector3.up , TargetCanvas.transform.position);
             //CreateContainerMenuBuildings();  
+
+            _cursor.Awake();
         }
 
         public void Start()
         {
-
+            _cursor.Start();
         }
 
         public void Update()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (_plane.Raycast(ray, out float position))
-            {
-                Vector3 worldPosition = ray.GetPoint(position);
-                _mouseRect.transform.position = new Vector3(worldPosition.x, TargetCanvas.transform.position.y, worldPosition.z);
-            }
+            _cursor.Update();
         }
-
+        /*
         public void CreateMenuBuildings()
         {
            GameObject temoGameObject = MainController.InstantiatePrefab(_button, Vector3.zero, _content.transform);
@@ -80,5 +71,6 @@ namespace Main.Ui
             tempRect.offsetMin = Vector2.zero;
             tempRect.offsetMax = Vector2.zero;
         }
+        */
     }
 }

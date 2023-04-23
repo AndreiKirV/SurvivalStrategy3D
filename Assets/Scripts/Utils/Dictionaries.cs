@@ -14,11 +14,10 @@ namespace Main.Dictionary
 
             public class UI
             {
-                private static readonly string Ui = PRREFABS + "UI/";
+                protected internal static readonly string Ui = PRREFABS + "UI/";
                 public static readonly string  Button = Ui + "Button";
                 public static readonly string  ScrollView = Ui + "ScrollView";
                 public static readonly string  Cursor = Ui + "Cursor";
-
                 public class STORE
                 {
                     private static readonly string Stores = Ui + "Stores/";
@@ -28,18 +27,17 @@ namespace Main.Dictionary
         }
 
         public class Buildings
+        {
+            public static readonly string BuildingsTypeIcon = "Graphics/Textures/UI/BuildingsTypeIcon/";
+
+            public static string [] Type = new string[]
             {
-                public enum Type
-                {
-                    Military,
-                    Apartment,
-                    Industrial,
-                    Production,
-                    Service,
-
-
-                    aMax
-                }
-            }
+                "Military",
+                "Apartment",
+                "Industrial",
+                "Production",
+                "Service",
+            };
+        }
     }    
 }
