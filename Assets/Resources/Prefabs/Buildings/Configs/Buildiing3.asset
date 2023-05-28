@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 2079489733233669441, guid: abc06c13f2b68b24bb08f2c9d49f11ee, type: 3}
   Size: {x: 5, y: 5}
+  Icon: {fileID: -1482129592, guid: 12b20f8b899c7d949b48aeee2a543b17, type: 3}

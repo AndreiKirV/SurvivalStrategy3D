@@ -10,22 +10,33 @@ namespace Main
 {
     public class MainController : MonoBehaviour
     {
-        [SerializeField] private List <FreeList> _buildings;
-        [SerializeField] private Canvas _currentCanvas; 
+        [SerializeField] public List<BuildingsList> _buildings;
+        private static List<BuildingsList> _sharedBuildings;
+
+        [SerializeField] private Canvas _currentCanvas;
         private WorldController _worldController = new WorldController();
         private UIController _UIController;
 
-        private void OnEnable() 
+
+        public static List<BuildingsList> Buildings
         {
-            
+            get { return _sharedBuildings; }
         }
 
-        private void OnDisable() 
+        private void OnEnable()
         {
-            
+
         }
-        private void Awake() 
+
+        private void OnDisable()
         {
+
+        }
+        
+        private void Awake()
+        {
+            _sharedBuildings = _buildings;
+
             _UIController = new UIController(_currentCanvas);
 
             _worldController.Awake();
@@ -43,13 +54,13 @@ namespace Main
             _UIController.Init();
         }
 
-        private void Start() 
+        private void Start()
         {
             _worldController.Start();
             _UIController.Start();
         }
 
-        private void Update() 
+        private void Update()
         {
             _worldController.Update();
             _UIController.Update();

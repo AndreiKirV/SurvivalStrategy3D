@@ -9,5 +9,6 @@ namespace Buildings
     {
         public GameObject Prefab;
         public Vector2Int Size = Vector2Int.one;
+        public Sprite Icon;
     }
 }

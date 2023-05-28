@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7519f7136beab4e975cdda5e2d21fc, type: 3}
+  m_Name: Industrial
+  m_EditorClassIdentifier: 
+  Type: Industrial
+  Items:
+  - {fileID: 11400000, guid: 49978cd3df5542044905157a49b027af, type: 2}
+  - {fileID: 11400000, guid: 4b55e46a965bd4e4580a4b6918c1b242, type: 2}
+  Icon: {fileID: 21741236, guid: 7b20000a8d30ca6498c26c18b5e8bb94, type: 3}

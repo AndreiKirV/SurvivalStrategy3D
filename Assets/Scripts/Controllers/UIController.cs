@@ -14,9 +14,6 @@ namespace Main.Ui
     public class UIController
     {
         public Canvas TargetCanvas;
-        private GameObject _button = Resources.Load<GameObject>(Dictionaries.Path.UI.Button);
-        private List <Button> _buttons = new List<Button>();
-        private GameObject _content;
         private Camera _camera;
         private BuildingStore _buildingsStore;
         private CursorController _cursor = new CursorController();

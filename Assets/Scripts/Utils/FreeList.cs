@@ -9,15 +9,15 @@ namespace Utils
     public class FreeList : ScriptableObject
     {
         public string Type;
-        public List <BuildingConfig> Buildings;
+        public List <BuildingConfig> Items;
 
         public FreeList(params BuildingConfig [] configs)
         {
-            Buildings = new List<BuildingConfig>();
+            Items = new List<BuildingConfig>();
 
             for (int i = 0; i < configs.Length; i++)
             {
-                Buildings.Add(configs[i]);
+                Items.Add(configs[i]);
             }
         }
     }
