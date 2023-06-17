@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "com.openai.api.unity": {
-      "version": "file:D:/download/OpenAi-Api-Unity-0.2.8",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,

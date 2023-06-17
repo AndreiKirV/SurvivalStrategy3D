@@ -32,7 +32,6 @@ namespace Main
         {
 
         }
-        
         private void Awake()
         {
             _sharedBuildings = _buildings;
