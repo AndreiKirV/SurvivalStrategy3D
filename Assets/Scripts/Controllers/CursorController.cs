@@ -31,7 +31,7 @@ namespace Main.Ui.Cursor
 
         public void Start()
         {
-            UnityEngine.Cursor.SetCursor(Resources.Load<Texture2D>("Graphics/Textures/UI/Cursors/Def"), Vector2.zero, CursorMode.Auto);
+            //UnityEngine.Cursor.SetCursor(Resources.Load<Texture2D>("Graphics/Textures/UI/Cursors/Def"), Vector2.zero, CursorMode.Auto);
         }
 
         public void Update() 
