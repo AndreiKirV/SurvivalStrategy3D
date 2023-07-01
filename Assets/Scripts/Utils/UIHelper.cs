@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectCloser : MonoBehaviour
+public class UIHelper : MonoBehaviour
 {
     public GameObject [] GameObjects;
 
@@ -19,5 +19,10 @@ public class ObjectCloser : MonoBehaviour
                 GameObjects[i].SetActive(true);
             }
         }
+    }
+
+    public void ChangeActivity(GameObject target)
+    {
+        target.SetActive(!target.activeSelf);
     }
 }
