@@ -16,7 +16,10 @@ namespace Main.Ui
         public Canvas TargetCanvas;
         private Camera _camera;
         private BuildingStore _buildingsStore;
-        private CursorController _cursor = new CursorController();
+        public static CursorController _cursor = new CursorController();
+
+        public static CursorController Cursor => _cursor;
+
         public UIController(Canvas canvas)
         {
             TargetCanvas = canvas;
@@ -33,9 +36,6 @@ namespace Main.Ui
 
         public void Awake()
         {
-            _camera = Camera.main;
-            //CreateContainerMenuBuildings();  
-
             _cursor.Awake();
         }
 
@@ -48,26 +48,5 @@ namespace Main.Ui
         {
             _cursor.Update();
         }
-        /*
-        public void CreateMenuBuildings()
-        {
-           GameObject temoGameObject = MainController.InstantiatePrefab(_button, Vector3.zero, _content.transform);
-           RectTransform tempRect = temoGameObject.GetComponent<RectTransform>();
-           tempRect.localRotation = Quaternion.Euler(Vector3.zero);
-           tempRect.localPosition = Vector3.zero;
-
-           _buttons.Add(temoGameObject.GetComponent<Button>());
-        }
-
-        private void CreateContainerMenuBuildings()
-        {
-            _content = MainController.InstantiatePrefab(Resources.Load<GameObject>(Dictionaries.Path.UI.ScrollView), Vector3.zero, TargetCanvas.gameObject.transform);  
-            RectTransform tempRect = _content.GetComponent<RectTransform>();
-            tempRect.localRotation = Quaternion.Euler(Vector3.zero);
-            tempRect.localPosition = Vector3.zero;
-            tempRect.offsetMin = Vector2.zero;
-            tempRect.offsetMax = Vector2.zero;
-        }
-        */
     }
 }

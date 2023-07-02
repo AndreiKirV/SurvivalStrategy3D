@@ -22,5 +22,10 @@ namespace Main.Dictionary
                 }
             }
         }
+
+        public class Layers
+        {
+            public static readonly string Terrain = "Terrain";
+        }
     }    
 }

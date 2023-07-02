@@ -32,20 +32,5 @@ namespace GWC
         {
             _buildingController.CreateFlyBuilding(config);
         }
-
-        public static void Destroy(GameObject tempObject)
-        {
-            MainController.MainDestroy(tempObject);
-        }
-
-        public static GameObject InstantiatePrefab(GameObject temp, Vector3 position)
-        {
-            return MainController.InstantiatePrefab(temp, position);
-        }
-
-        public static GameObject InstantiatePrefab(GameObject temp)
-        {
-            return MainController.InstantiatePrefab(temp);
-        }
     }
 }

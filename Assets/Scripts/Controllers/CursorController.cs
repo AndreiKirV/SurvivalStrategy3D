@@ -7,43 +7,64 @@ namespace Main.Ui.Cursor
 {
     public class CursorController
     {
-        public Canvas TargetCanvas;
+        private RaycastHit[] _points;
+        private Canvas TargetCanvas;
         private Camera _camera;
-        //private RectTransform _mouseRect;
-        //private GameObject _cursor = Resources.Load<GameObject>(Dictionaries.Path.UI.Cursor);
-        private Plane _plane;
-        
+        private GameObject _cursor = Resources.Load<GameObject>(Dictionaries.Path.UI.Cursor);
+        private RectTransform _cursorTransform;
 
-        public void Awake() 
+        public RaycastHit[] Points => _points;
+
+
+        public void Awake()
         {
+            _camera = Camera.main;
         }
 
         public void Init(Canvas canvas)
         {
             TargetCanvas = canvas;
-            //UnityEngine.Cursor.visible = false;
-            //_cursor = MainController.InstantiatePrefab(_cursor, TargetCanvas.transform.position, TargetCanvas.transform);
-            //_mouseRect = _cursor.GetComponent<RectTransform>();
-            //_mouseRect.localRotation = Quaternion.Euler(Vector3.zero);
-            _plane = new Plane(Vector3.up , TargetCanvas.transform.position);
-            _camera = Camera.main;
+            UnityEngine.Cursor.visible = false;
+            _cursor = MainController.InstantiatePrefab(_cursor, Vector3.zero, TargetCanvas.transform);
+            _cursorTransform = _cursor.GetComponent<RectTransform>();
+            _cursorTransform.anchoredPosition3D = Vector3.zero;
+            _cursorTransform.localRotation = Quaternion.Euler(Vector3.zero);
         }
 
         public void Start()
         {
-            //UnityEngine.Cursor.SetCursor(Resources.Load<Texture2D>("Graphics/Textures/UI/Cursors/Def"), Vector2.zero, CursorMode.Auto);
+
         }
 
-        public void Update() 
+        public void Update()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector2 mousePosition = Input.mousePosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(TargetCanvas.transform as RectTransform, mousePosition, TargetCanvas.worldCamera, out Vector2 localPoint);
+            _cursorTransform.localPosition = localPoint;
 
-            if (_plane.Raycast(ray, out float position))
-            {
-                Vector3 worldPosition = ray.GetPoint(position);
-                //_mouseRect.transform.position = new Vector3(worldPosition.x, TargetCanvas.transform.position.y, worldPosition.z);
-            }
+            GetRayCollisions();
         }
 
+        private void GetRayCollisions()
+        {
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+            _points = Physics.RaycastAll(ray);
+        }
+
+        public Vector3? GiveTerrainPoint()
+        {
+            if (_points != null && _points.Length > 0)
+            {
+                for (int i = 0; i < _points.Length; i++)
+                {
+                    if (_points[i].transform.gameObject.layer == LayerMask.NameToLayer(Dictionaries.Layers.Terrain))
+                    {
+                        return _points[i].point;
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }

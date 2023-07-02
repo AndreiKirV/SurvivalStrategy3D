@@ -5,6 +5,7 @@ using GWC;
 using Main.Dictionary;
 using Utils;
 using Main.Ui;
+using Buildings;
 
 namespace Main
 {
@@ -72,17 +73,30 @@ namespace Main
 
         public static GameObject InstantiatePrefab(GameObject temp, Vector3 position, Transform parent)
         {
-            return Instantiate<GameObject>(temp, position, Quaternion.identity, parent);
+            GameObject tempGameObject = Instantiate<GameObject>(temp, position, Quaternion.identity, parent);
+            tempGameObject.name = temp.name;
+            return tempGameObject;
         }
 
         public static GameObject InstantiatePrefab(GameObject temp, Vector3 position)
         {
-            return Instantiate<GameObject>(temp, position, Quaternion.identity);
+            GameObject tempGameObject = Instantiate<GameObject>(temp, position, Quaternion.identity);
+            tempGameObject.name = temp.name;
+            return tempGameObject;
         }
 
         public static GameObject InstantiatePrefab(GameObject temp)
         {
-            return Instantiate<GameObject>(temp);
+            GameObject tempGameObject = Instantiate<GameObject>(temp);
+            tempGameObject.name = temp.name;
+            return tempGameObject;
+        }
+
+        //temp
+
+        public void CreateFlyBuilding(BuildingConfig config)
+        {
+            _worldController.CreateFlyBuilding(config);
         }
     }
 }
