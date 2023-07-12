@@ -6,16 +6,19 @@ using Main.Dictionary;
 using Utils;
 using Main.Ui;
 using Buildings;
+using TMPro;
 
 namespace Main
 {
     public class MainController : MonoBehaviour
     {
         [SerializeField] public List<BuildingsList> _buildings;
+        [SerializeField] private TextMeshProUGUI _text;
         private static List<BuildingsList> _sharedBuildings;
 
         [SerializeField] private Canvas _currentCanvas;
         private WorldController _worldController = new WorldController();
+        private TimeController _timer = new TimeController();
         private UIController _UIController;
 
 
@@ -58,12 +61,15 @@ namespace Main
         {
             _worldController.Start();
             _UIController.Start();
+            _timer.Start();
         }
 
         private void Update()
         {
             _worldController.Update();
             _UIController.Update();
+            _timer.Update();
+            _text.text = $"{(int)_timer.CurrentTime / 60} : {(int)_timer.CurrentTime % 60}";
         }
 
         public static void MainDestroy(GameObject tempObject)

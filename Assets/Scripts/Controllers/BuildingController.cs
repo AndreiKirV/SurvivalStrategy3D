@@ -49,7 +49,7 @@ namespace GWC
                         available = false;
                     }
 
-                    if(available && Input.GetMouseButtonDown(0) && !IsPlaceTaken(x,z))
+                    if(available && Input.GetMouseButtonUp(0) && !IsPlaceTaken(x,z))
                     {
                         PlaceBuilding(x, z);
                     }

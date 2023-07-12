@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd7519f7136beab4e975cdda5e2d21fc, type: 3}
-  m_Name: Industrial
+  m_Name: Special
   m_EditorClassIdentifier: 
-  Type: Industrial
+  Type: Special
   Items:
   - {fileID: 11400000, guid: 49978cd3df5542044905157a49b027af, type: 2}
   - {fileID: 11400000, guid: 4b55e46a965bd4e4580a4b6918c1b242, type: 2}
-  Icon: {fileID: 21741236, guid: 7b20000a8d30ca6498c26c18b5e8bb94, type: 3}
+  - {fileID: 11400000, guid: c4bc794dfb0aa504ba5221e152c25e4b, type: 2}
+  - {fileID: 11400000, guid: 65231c2b82400c340a9e1910453e51cd, type: 2}
+  - {fileID: 11400000, guid: 39fe89074ed759849a506aa83538d212, type: 2}
+  Icon: {fileID: 0}
